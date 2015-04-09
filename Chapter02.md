@@ -6,6 +6,7 @@
       else 0
  }
  ```
+
 2. What is the value of an empty block expression {}? What is its type?
   
   Value is blank and type is `Unit`
