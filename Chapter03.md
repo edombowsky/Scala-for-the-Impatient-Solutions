@@ -11,6 +11,14 @@
 ```
 
 2. Write a loop that swaps adjacent elements of an array of integers.  For example, `Array(1,2,3,4,5)` becomes `Array(2,1,4,3,5)`
+ ```scala
+    for (i <- 0 until(a.size, 2) if (i < a.length-1)) {
+      val tmp = a(i)
+      a(i) = a(i+1)
+      a(i+1) = tmp
+    }
+```
+
 3. Repeat the preceding assignments, but produces a new array with the swapped values.  Use `for/yield`.
 4. Given an array of integers, produce a new array that contains all positive values of the original array, in their original order, followed by all values that are zero or negative, in their original order.
 5. How do you compute the average of an `Array[Double]`
