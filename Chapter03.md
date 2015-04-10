@@ -28,7 +28,7 @@
       }
 ```
 
-and just looking ahead a bit here are are a few more more Scala like versions:
+ and just looking ahead a bit here are are a few more more Scala like versions:
  ```scala
     array.grouped(2).toArray.flatMap(_.reverse)
   
