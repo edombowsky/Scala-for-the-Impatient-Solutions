@@ -20,6 +20,28 @@
 ```
 
 3. Repeat the preceding assignments, but produces a new array with the swapped values.  Use `for/yield`.
+ ```scala
+    for (i <- 0 until a.length) yield 
+      if (i % 2 != 0) a(i - 1) 
+      else {
+        if (i == a.length - 1) a(i) else a( i + 1)
+      }
+```
+
+and just looking ahead a bit here are are a few more more Scala like versions:
+ ```scala
+    array.grouped(2).toArray.flatMap(_.reverse)
+  
+    array match {
+      case Array(x, y, z @ _*) => Array(y, x) ++ z
+      case _ => array
+    }
+
+    array.grouped(2).flatMap{ 
+      case Array(x,y) => Array(y,x)
+      case Array(x) => Array(x)
+    }.toArray
+```
 4. Given an array of integers, produce a new array that contains all positive values of the original array, in their original order, followed by all values that are zero or negative, in their original order.
 5. How do you compute the average of an `Array[Double]`
 6. How do you rearrange the elements of an `Array[Int]` so that they appear in reverse sorted order?  How do you do the same with an `ArrayBuffer[Int]`?
