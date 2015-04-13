@@ -129,8 +129,12 @@
 ```
 
 10. Import `java.awt.datatransfer._` and make an object of type `SystemFlavorMap` with the call
- ```java
- val flavors = SystemFlavorMap.getDefaultFlavorMap().asInstanceOf[SystemFlavorMap]`
- ```
+ ```scala
+    val flavors = SystemFlavorMap.getDefaultFlavorMap().asInstanceOf[SystemFlavorMap]`
+```
  
  Then call the `getNativesForFlavor` method with parameter `DataFlavor.imageFlavor` and get the return value as a Scall Buffer.  (Why this obscure class?  It;s hard to find uses of `java.util.List` in the standard Java library.)
+  ```scala
+     val flavMap = SystemFlavorMap.getDefaultFlavorMap().asInstanceOf[SystemFlavorMap]
+     val natives = flavMap.getNativesForFlavor(DataFlavor.imageFlavor)
+```
