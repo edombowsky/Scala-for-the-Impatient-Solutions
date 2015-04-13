@@ -43,6 +43,25 @@
     }.toArray
 ```
 4. Given an array of integers, produce a new array that contains all positive values of the original array, in their original order, followed by all values that are zero or negative, in their original order.
+```scala
+    import scala.collection.mutable.ArrayBuffer
+
+    val a = Array[Int](2,6,-1,9,0,-4,-6)
+    val pos, neg, zer = new ArrayBuffer[Int]
+
+    for (i <- 0 until a.length) {
+      if (a(i) < 0) neg += i
+      else if (a(i) > 0) pos += i
+      else zer += i
+    }
+
+    val ab = new ArrayBuffer[Int]
+    ab ++= (for(i <- pos) yield a(i))
+    ab ++= (for(i <- zer) yield a(i))
+    ab ++= (for(i <- neg) yield a(i))
+    
+    ab.toArray 
+```
 5. How do you compute the average of an `Array[Double]`
 6. How do you rearrange the elements of an `Array[Int]` so that they appear in reverse sorted order?  How do you do the same with an `ArrayBuffer[Int]`?
 7. Write a code snippet that produces all values from an array with duplicates removed.  (Hint: Look at Scaladoc)
