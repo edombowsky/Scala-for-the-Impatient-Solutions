@@ -43,7 +43,7 @@
     }.toArray
 ```
 4. Given an array of integers, produce a new array that contains all positive values of the original array, in their original order, followed by all values that are zero or negative, in their original order.
-```scala
+ ```scala
     import scala.collection.mutable.ArrayBuffer
 
     val a = Array[Int](2,6,-1,9,0,-4,-6)
@@ -63,7 +63,7 @@
     ab.toArray 
 ```
 
-A much more scala way:
+ and a much more scala way:
  ```scala
     def positiveNegative(a: Array[Int]) = {
       a.filter(_ > 0) ++ a.filter(_ < 0) ++ a.filter(_ == 0)
