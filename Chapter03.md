@@ -72,15 +72,22 @@
     val a = Array[Int](2,6,-1,9,0,-4,-6)
     val res = positiveNegative(a)
 ```
+
 5. How do you compute the average of an `Array[Double]`
  ```scala
     val average = (a.reduceLeft[Double](_ + _)) / a.length
+```
+
+ this also works
+ ```scala
+   val average = a.sum / a.length
 ```
 
 6. How do you rearrange the elements of an `Array[Int]` so that they appear in reverse sorted order?  How do you do the same with an `ArrayBuffer[Int]`?
  ```scala
     a.reverse.sortWith(_ < _)
 ```
+
 7. Write a code snippet that produces all values from an array with duplicates removed.  (Hint: Look at Scaladoc)
 8. Rewrite the example at the end of Section 4 using the `drop` method for dropping the index of the first match.  Look the method up in Scaladoc.
 9. Make a collection of all time zones returned by `java.util.TimeZone.getAvailableIds` that are in America.  Strip off the `"America/"` prefix and sort the result.
