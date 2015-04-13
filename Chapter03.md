@@ -95,6 +95,39 @@
 
 8. Rewrite the example at the end of Section 4 using the `drop` method for dropping the index of the first match.  Look the method up in Scaladoc.
 9. Make a collection of all time zones returned by `java.util.TimeZone.getAvailableIds` that are in America.  Strip off the `"America/"` prefix and sort the result.
+ ```scala
+    def quicksort[A <% Ordered[A]](list: List[A]): List[A] = {
+      def sort(t: (List[A], A, List[A])): List[A] = t match {
+        case (Nil, p, Nil) => List(p)
+        case (l, p, g) =>  partitionAndSort(l) ::: (p :: partitionAndSort(g))
+      }
+
+      def partition(as: List[A]): (List[A], A, List[A]) = {
+        def loop(p: A, as: List[A], l: List[A], g: List[A]): (List[A], A, List[A]) = 
+          as match {
+            case h :: t => if (h < p) loop(p, t, h :: l, g) else loop(p, t, l, h :: g)
+            case Nil => (l, p, g)
+          }
+
+        loop(as.head, as.tail, Nil, Nil)
+      }
+
+      def partitionAndSort(as: List[A]): List[A] = 
+        if (as.isEmpty) Nil
+        else sort(partition(as))
+      
+      partitionAndSort(list)
+    }
+
+    import java.util.TimeZone.getAvailableIds
+    
+    val timezones = for (elem <- getAvailableIDs() if elem.contains("America")) yield {
+      elem.stripPrefix("America/")
+    }
+
+    quicksort(timezones.toList)
+```
+
 10. Import `java.awt.datatransfer._` and make an object of type `SystemFlavorMap` with the call
  ```java
  val flavors = SystemFlavorMap.getDefaultFlavorMap().asInstanceOf[SystemFlavorMap]`
