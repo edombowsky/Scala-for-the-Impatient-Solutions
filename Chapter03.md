@@ -89,6 +89,10 @@
 ```
 
 7. Write a code snippet that produces all values from an array with duplicates removed.  (Hint: Look at Scaladoc)
+ ```scala
+    a.distinct
+```
+
 8. Rewrite the example at the end of Section 4 using the `drop` method for dropping the index of the first match.  Look the method up in Scaladoc.
 9. Make a collection of all time zones returned by `java.util.TimeZone.getAvailableIds` that are in America.  Strip off the `"America/"` prefix and sort the result.
 10. Import `java.awt.datatransfer._` and make an object of type `SystemFlavorMap` with the call
