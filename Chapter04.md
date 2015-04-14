@@ -36,6 +36,21 @@
 4. Repeat the preceding exercise with a sorted map, so that the words are printed in sorted order.
 5. Repeat the preceding exercise with a `java.util.TreeMap` that you adapt to the Scala API.
 6. Deﬁne a linked hash map that maps `"Monday"`` to `java.util.Calendar.MONDAY`, and similarly for the other weekdays. Demonstrate that the elements are visited in insertion order.
+ ```scala
+    import scala.collection.mutable.LinkedHashMap
+
+    val daysOfTheWeek = LinkedHashMap(
+      "Monday"    -> java.util.Calendar.MONDAY,
+      "Tuesday"   -> java.util.Calendar.TUESDAY,
+      "Wednesday" -> java.util.Calendar.WEDNESDAY,
+      "Thursday"  -> java.util.Calendar.THURSDAY,
+      "Friday"    -> java.util.Calendar.FRIDAY,
+      "Saturday"  -> java.util.Calendar.SATURDAY,
+      "Sunday"    -> java.util.Calendar.SUNDAY)
+
+    println(daysOfTheWeek)
+```
+
 7. Print a table of all Java properties, like this:
 
  |   |   |
