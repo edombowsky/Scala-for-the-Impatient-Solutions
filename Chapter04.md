@@ -18,7 +18,7 @@
     import java.io.File
 
     def count(word: String) = {
-      if (words.contains(word)) words(word) = words(word) + 1
+      if (words.contains(word)) words(word) += 1
       else words(word) = 1
     }
 
