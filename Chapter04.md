@@ -64,6 +64,17 @@
  | java.vm.name          | Java HotSpot(TM) Server VM
  
  You need to find the length of the longest key before you can print the table.
+ ```scala
+    import scala.collection.JavaConverters._
+
+    val props = System.getProperties().asScala
+    val longestKey = props.keysIterator.reduceLeft((x,y) => if (x.length > y.length) x else y)
+
+    for ((k,v) <- props) {
+      print(k + (" " * (longestKey.length - k.length)) + "| " + v + '\n')
+    }
+```
+
 8. Write a function `minmax(values: Array[Int])`` that returns a pair containing the smallest and largest values in the array.
 9. Write a function `lteqgt(values: Array[Int], v: Int)`` that returns a triple containing the counts of values less than v, equal to v, and greater than v.
 10. What happens when you zip together two strings, such as `"Hello".zip("World")`? Come up with a plausible use case.
