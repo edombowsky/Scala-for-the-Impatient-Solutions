@@ -17,12 +17,12 @@
     import java.util.Scanner
     import java.io.File
 
+    val words = new HashMap[String, Int]
+    
     def count(word: String) = {
       if (words.contains(word)) words(word) += 1
       else words(word) = 1
     }
-
-    val words = new HashMap[String, Int]
 
     val in = new Scanner(new File("words.txt")) 
     while (in.hasNext()) {
