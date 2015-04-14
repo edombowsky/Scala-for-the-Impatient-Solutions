@@ -86,6 +86,12 @@
     }
 ```
 
-8. Write a function `minmax(values: Array[Int])`` that returns a pair containing the smallest and largest values in the array.
-9. Write a function `lteqgt(values: Array[Int], v: Int)`` that returns a triple containing the counts of values less than v, equal to v, and greater than v.
+8. Write a function `minmax(values: Array[Int])` that returns a pair containing the smallest and largest values in the array.
+ ```scala
+    def minmax(a: Array[Int]) = (a.min, a.max)
+
+    println(minmax(Array(0,1,2,3,4,5,6,7,8,9)))
+  ```
+  
+9. Write a function `lteqgt(values: Array[Int], v: Int)` that returns a triple containing the counts of values less than v, equal to v, and greater than v.
 10. What happens when you zip together two strings, such as `"Hello".zip("World")`? Come up with a plausible use case.
