@@ -74,6 +74,17 @@
       print(k + (" " * (longestKey.length - k.length)) + "| " + v + '\n')
     }
 ```
+ or this:
+ ```scala
+    import scala.collection.JavaConverters._
+
+    val props = System.getProperties().asScala
+    val longestKey = props.keys.map(_.length).max
+
+    for ((k,v) <- props) {
+      print(k + (" " * (longestKey - k.length)) + "| " + v + '\n')
+    }
+```
 
 8. Write a function `minmax(values: Array[Int])`` that returns a pair containing the smallest and largest values in the array.
 9. Write a function `lteqgt(values: Array[Int], v: Int)`` that returns a triple containing the counts of values less than v, equal to v, and greater than v.
