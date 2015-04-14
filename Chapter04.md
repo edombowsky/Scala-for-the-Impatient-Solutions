@@ -9,10 +9,29 @@
     val in = new java.util.Scanner(new java.io.File("myfile.txt"))
     while (in.hasNext()) process in.next()
 ```
-
  Or look at Chapter 9 for a Scalaesque way.
 
  At the end, print out all words and their counts.
+ ```scala
+    import scala.collection.mutable.HashMap
+    import java.util.Scanner
+    import java.io.File
+
+    def count(word: String) = {
+      if (words.contains(word)) words(word) = words(word) + 1
+      else words(word) = 1
+    }
+
+    val words = new HashMap[String, Int]
+
+    val in = new Scanner(new File("words.txt")) 
+    while (in.hasNext()) {
+      count(in.next())
+    }
+    
+    println(words)
+```
+
 3. Repeat the preceding exercise with an immutable map.
 4. Repeat the preceding exercise with a sorted map, so that the words are printed in sorted order.
 5. Repeat the preceding exercise with a `java.util.TreeMap` that you adapt to the Scala API.
