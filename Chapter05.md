@@ -1,4 +1,20 @@
 1. Improve the `Counter` class in Section 1 so that it doesn't turn negative at `Int.MaxValue`.
+ ```scala
+    class Counter(private var value: Int = 0) {
+      def increment() { if (value < Int.MaxValue) value += 1 }
+      def current = value
+    }
+
+    // Test it out by starting just below Int.MaxValue
+    val c = new Counter(Int.MaxValue - 1)
+
+    println(c.current)
+    c.increment()
+    println(c.current)
+    c.increment()
+    println(c.current)
+```
+
 2. Write a class `BankAccount` with methods `deposit` and `withdraw`, and a read-only property `balance`.
 3. Write a class `Time` with read-only properties `hours` and `minutes` and a method `before(other: Time): Boolean` that checks whether this time comes before the other. A `Time` object should be constructed as `new Time(hrs, min)`, where `hrs` is in military time format (between 0 and 23).
 4. Reimplement the `Time` class from the preceding exercise so that the internal representation is the number of minutes since midnight (between 0 and 24 × 60 – 1). **Do not** change the public interface. That is, client code should be unaffected by your change.
