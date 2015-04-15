@@ -94,4 +94,13 @@
   ```
   
 9. Write a function `lteqgt(values: Array[Int], v: Int)` that returns a triple containing the counts of values less than v, equal to v, and greater than v.
+ ```scala
+    def lteqgt(values: Array[Int], v: Int) = {
+      (values.count(_ < v), values.count(_ == v), values.count(_ > v))
+    }
+
+    val testArray = Array(1, 3, 6, 8, 3, 6, -1, 2)
+
+    println(lteqgt(testArray, 3))
+```
 10. What happens when you zip together two strings, such as `"Hello".zip("World")`? Come up with a plausible use case.
