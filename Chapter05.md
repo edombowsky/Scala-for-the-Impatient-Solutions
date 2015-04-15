@@ -16,6 +16,35 @@
 ```
 
 2. Write a class `BankAccount` with methods `deposit` and `withdraw`, and a read-only property `balance`.
+ ```scala
+    class BankAccount {
+      private var _balance: Double = 0.0
+
+      def deposit(amount: Double) = {
+        if (amount > 0.0) _balance += amount
+      }
+
+      def withdraw(amount: Double) = {
+        if (amount > 0.0 && amount <= _balance) _balance -= amount
+      }
+
+      def balance = _balance
+    }
+
+    // Test it starting with a account balance of 100.00
+    val account = new BankAccount()
+    account.deposit(100)
+    println(account.balance)
+    account.withdraw(75)
+    println(account.balance)
+    account.withdraw(50)
+    println(account.balance)
+    account.withdraw(-50)
+    println(account.balance)
+    account.deposit(-100)
+    println(account.balance)
+```
+
 3. Write a class `Time` with read-only properties `hours` and `minutes` and a method `before(other: Time): Boolean` that checks whether this time comes before the other. A `Time` object should be constructed as `new Time(hrs, min)`, where `hrs` is in military time format (between 0 and 23).
 4. Reimplement the `Time` class from the preceding exercise so that the internal representation is the number of minutes since midnight (between 0 and 24 × 60 – 1). **Do not** change the public interface. That is, client code should be unaffected by your change.
 5. Make a class `Student` with read-write JavaBeans properties `name` (of type `String`) and `id` (of type `Long)`. What methods are generated? (Use javap to check.) Can you call the JavaBeans getters and setters in Scala? Should you?
