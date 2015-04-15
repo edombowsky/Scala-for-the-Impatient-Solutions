@@ -57,6 +57,31 @@
 ```
 
 4. Repeat the preceding exercise with a sorted map, so that the words are printed in sorted order.
+ ```scala
+    import collection.immutable.SortedMap
+    import java.util.Scanner
+    import java.io.File
+
+    def countWordsSorted() = {
+      var words = SortedMap[String, Int]()
+
+      def process(word: String) {
+        val count = words.getOrElse(word, 0)
+        words = words + (word -> (count + 1))
+      }
+
+      val in = new Scanner(new File("test.scala"))
+      while (in.hasNext()) {
+        process(in.next())
+      }
+
+      words
+    }
+
+    val wordsSorted = countWordsSorted()
+    wordsSorted foreach { case (word, count) => printf("%5d %s\n", count, word) }
+```
+
 5. Repeat the preceding exercise with a `java.util.TreeMap` that you adapt to the Scala API.
 6. Deﬁne a linked hash map that maps `"Monday"`` to `java.util.Calendar.MONDAY`, and similarly for the other weekdays. Demonstrate that the elements are visited in insertion order.
  ```scala
