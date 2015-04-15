@@ -109,3 +109,13 @@
     println(lteqgt(testArray, 3))
 ```
 10. What happens when you zip together two strings, such as `"Hello".zip("World")`? Come up with a plausible use case.
+ - You are left with a vector of pairs of characters, with each character pair set to letters in the same position in the sequence (i.e. `Vector((H,W), (e,o), (l,r), (l,l), (o,d))`). 
+ - A plausible use case could be matching upper case to lower case letters in the alphabet.
+
+  ```scala
+     val caseConverter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".zip("abcdefghijklmnopqrstuvwxyz").toMap
+
+     var lower = caseConverter('D')
+
+     println(lower)
+```
