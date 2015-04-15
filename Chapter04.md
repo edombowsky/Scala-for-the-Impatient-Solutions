@@ -29,7 +29,7 @@
       count(in.next())
     }
     
-    println(words)
+    words foreach { case (word, count) => printf("%5d %s\n", count, word) }
 ```
 
 3. Repeat the preceding exercise with an immutable map.
