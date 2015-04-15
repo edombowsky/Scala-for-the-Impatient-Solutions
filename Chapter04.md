@@ -83,6 +83,31 @@
 ```
 
 5. Repeat the preceding exercise with a `java.util.TreeMap` that you adapt to the Scala API.
+ ```scala
+    import scala.collection.JavaConversions.mapAsScalaMap
+    import java.util.Scanner
+    import java.io.File
+
+    def countWordsUsingTreeMap(filename: String): scala.collection.mutable.Map[String, Int] = {
+      val in = new Scanner(new File(filename))
+      val words: scala.collection.mutable.Map[String, Int] = new java.util.TreeMap[String, Int]
+  
+      def process(word: String) {
+        if (words.contains(word)) words(word) += 1
+        else words(word) = 1
+      }
+
+      while (in.hasNext()) {
+        process(in.next())
+      }
+
+      words
+    }
+  
+    countWordsUsingTreeMap("test.scala") foreach { case (word, count) => printf("%5d %s\n", count, word) }
+    // wordsTreeMap foreach { case (word, count) => printf("%5d %s\n", count, word) }
+```
+
 6. Deﬁne a linked hash map that maps `"Monday"`` to `java.util.Calendar.MONDAY`, and similarly for the other weekdays. Demonstrate that the elements are visited in insertion order.
  ```scala
     import scala.collection.mutable.LinkedHashMap
