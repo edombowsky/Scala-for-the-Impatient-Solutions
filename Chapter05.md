@@ -96,6 +96,37 @@
     println("Is time: " + time2 + " before time: " + time + "?    " + time.before(time2))
 ```
 4. Reimplement the `Time` class from the preceding exercise so that the internal representation is the number of minutes since midnight (between 0 and 24 × 60 – 1). **Do not** change the public interface. That is, client code should be unaffected by your change.
+ ```scala
+    class Time(hours: Int, minutes: Int) {
+      private val MinutesPerHour = 60
+      private val minutesSinceMidnight = (hours * MinutesPerHour) + minutes
+
+     def before(other: Time): Boolean = {
+       minutesSinceMidnight < other.minutesSinceMidnight
+     }
+
+     override def toString(): String = minutesSinceMidnight/MinutesPerHour + ":" + 
+                                         minutesSinceMidnight %MinutesPerHour
+
+     def hrs = minutesSinceMidnight / MinutesPerHour
+     def min = minutesSinceMidnight % MinutesPerHour
+
+     if (_hours < 0) _hours = 23
+     if (_hours > 23) _hours = 0
+  
+     if (_minutes < 0) _minutes = 59
+     if (_minutes > 59) _minutes = 0
+   }
+
+   // Test it
+   val time  = new Time(1, 30)
+   val time1 = new Time(2, 30)
+   val time2 = new Time(1, 10)
+
+   println("Is time: " + time + " before time: " + time1 + "?    " + time.before(time1))
+   println("Is time: " + time + " before time: " + time2 + "?    " + time.before(time2))
+```
+
 5. Make a class `Student` with read-write JavaBeans properties `name` (of type `String`) and `id` (of type `Long)`. What methods are generated? (Use javap to check.) Can you call the JavaBeans getters and setters in Scala? Should you?
 6. In the `Person` class of Section 1, provide a primary constructor that turns negative ages to 0.
 7. Write a class `Person` with a primary constructor that accepts a string containing a first name, a space, and a last name, such as `new Person("Fred Smith")`. Supply read-only properties `firstName` and `lastName`. Should the primary constructor parameter be a `var`, a `val`, or a plain parameter? Why?
