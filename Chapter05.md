@@ -67,7 +67,7 @@
        */
       def before(other: Time): Boolean = {
         // Convert both to seconds and compare
-        _hours * MIN_IN_HOUR + _minutes > other._hours * MIN_IN_HOUR + other._minutes
+        _hours * MIN_IN_HOUR + _minutes < other._hours * MIN_IN_HOUR + other._minutes
       }
 
       /**
@@ -92,8 +92,8 @@
     val time1 = new Time(2, 30)
     val time2 = new Time(1, 10)
 
-    println("Is time: " + time1 + " before time: " + time + "?    " + time.before(time1))
-    println("Is time: " + time2 + " before time: " + time + "?    " + time.before(time2))
+    println("Is time: " + time + " before time: " + time1 + "?    " + time.before(time1))
+    println("Is time: " + time + " before time: " + time2 + "?    " + time.before(time2))
 ```
 4. Reimplement the `Time` class from the preceding exercise so that the internal representation is the number of minutes since midnight (between 0 and 24 × 60 – 1). **Do not** change the public interface. That is, client code should be unaffected by your change.
  ```scala
