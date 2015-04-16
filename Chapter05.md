@@ -46,6 +46,55 @@
 ```
 
 3. Write a class `Time` with read-only properties `hours` and `minutes` and a method `before(other: Time): Boolean` that checks whether this time comes before the other. A `Time` object should be constructed as `new Time(hrs, min)`, where `hrs` is in military time format (between 0 and 23).
+ ```scala
+     /**
+     * A time record.
+     *
+     * @constructor creates a new time with hours and minutes
+     * @param hours:   Int number of hours
+     * @param minutes: Int number of minutes
+     */
+    class Time(hours: Int, minutes: Int) {
+      private var _hours      = hours
+      private var _minutes    = minutes
+      private val MIN_IN_HOUR = 3600
+
+      /**
+       * Returns true if this time comes before the other, false otherwise
+       *
+       * @param other The time to check if given time is before
+       * @return False if this time is before other, else true
+       */
+      def before(other: Time): Boolean = {
+        // Convert both to seconds and compare
+        _hours * MIN_IN_HOUR + _minutes > other._hours * MIN_IN_HOUR + other._minutes
+      }
+
+      /**
+       * Converts a `Time` object to a `String`
+       * 
+       * @return String
+       */
+      override def toString(): String = _hours + ":" + _minutes;
+
+      def hrs = _hours
+      def min = _minutes
+
+      if (_hours < 0) _hours = 23
+      if (_hours > 23) _hours = 0
+  
+      if (_minutes < 0) _minutes = 59
+      if (_minutes > 59) _minutes = 0
+    }
+
+    // Test it
+    val time  = new Time(1, 30)
+    val time1 = new Time(2, 30)
+    val time2 = new Time(1, 10)
+
+    println("Is time: " + time1 + " before time: " + time + "?    " + time.before(time1))
+    println("Is time: " + time2 + " before time: " + time + "?    " + time.before(time2))
+```
 4. Reimplement the `Time` class from the preceding exercise so that the internal representation is the number of minutes since midnight (between 0 and 24 × 60 – 1). **Do not** change the public interface. That is, client code should be unaffected by your change.
 5. Make a class `Student` with read-write JavaBeans properties `name` (of type `String`) and `id` (of type `Long)`. What methods are generated? (Use javap to check.) Can you call the JavaBeans getters and setters in Scala? Should you?
 6. In the `Person` class of Section 1, provide a primary constructor that turns negative ages to 0.
